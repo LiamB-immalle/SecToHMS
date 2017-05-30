@@ -6,27 +6,32 @@ using System.Threading.Tasks;
 
 namespace SecToUMS
 {
+    struct HMSTime
+    {
+        public int Hours;
+        public int Mins;
+        public int Secs;
+    }
+
     class Program
     {
-        static void SecToHoursMinsSecs(int totalSeconds, out int uren, out int minuten, out int seconden)
+        static HMSTime SecToHMS(int totalSeconds)
         {
-            int rest = 0;
+            HMSTime a;
+            int rest;
 
-            uren = totalSeconds / (60 * 60);
+            a.Hours = totalSeconds / (60 * 60);
             rest = totalSeconds % (60 * 60);
-            minuten = rest / 60;
-            seconden = rest % 60;
+            a.Mins = rest / 60;
+            a.Secs = rest % 60;
+            return a;
         }
 
         static void Main(string[] args)
         {
-            int h = 0;
-            int m = 0;
-            int s = 0;
+            HMSTime b = SecToHMS(25651);
 
-            SecToHoursMinsSecs(54324561, out h, out m, out s);
-
-            Console.WriteLine("{0} hours {1} minutes and {2} seconds", h, m, s);
+            Console.WriteLine("Dat zijn {0} uren, {1} minuten en {2} seconden.", b.Hours, b.Mins, b.Secs);
         }
     }
 }
