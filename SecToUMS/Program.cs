@@ -8,25 +8,25 @@ namespace SecToUMS
 {
     class Program
     {
-        static void SecToHoursMinsSecs(int totalSeconds, out int uren, out int minuten, out int seconden)
+        static int hours;
+        static int mins;
+        static int secs;
+
+        static void SecToHoursMinsSecs(int totalSeconds)
         {
             int rest = 0;
 
-            uren = totalSeconds / (60 * 60);
+            hours = totalSeconds / (60 * 60);
             rest = totalSeconds % (60 * 60);
-            minuten = rest / 60;
-            seconden = rest % 60;
+            mins = rest / 60;
+            secs = rest % 60;
         }
 
         static void Main(string[] args)
         {
-            int h = 0;
-            int m = 0;
-            int s = 0;
+            SecToHoursMinsSecs(61);
 
-            SecToHoursMinsSecs(54324561, out h, out m, out s);
-
-            Console.WriteLine("{0} hours {1} minutes and {2} seconds", h, m, s);
+            Console.WriteLine("{0} Hours {1} Minutes and {2} Seconds", hours, mins, secs);
         }
     }
 }
